@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Tiếng Anh - Ms Lê Hằng English</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #00B4A2;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 120 120'%3E%3Cg fill='%23ffffff' fill-opacity='0.07'%3E%3Cpath d='M30 20c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4zm0-6c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm50 40c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8zm0-20c11 0 20 9 20 20s-9 20-20 20-20-9-20-20 9-20 20-20zM35 85c0-3.9 3.1-7 7-7s7 3.1 7 7-3.1 7-7 7-7-3.1-7-7zm-6 0c0 7.2 5.8 13 13 13s13-5.8 13-13-5.8-13-13-13-13 5.8-13 13zm60-5c1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3 1.3 3 3 3zm0-10c7.2 0 13 5.8 13 13s-5.8 13-13 13-13-5.8-13-13 5.8-13 13-13z'/%3E%3C/g%3E%3C/svg%3E");
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        header h5 {
+            margin: 5px 0;
+            font-weight: 500;
+            font-size: 14px;
+            opacity: 0.95;
+        }
+        header h1 {
+            margin: 10px 0;
+            font-size: 26px;
+        }
+        .alert-box {
+            background-color: #fff3cd;
+            border-left: 6px solid #ffc107;
+            color: #856404;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .alert-box h4 {
+            margin: 0 0 8px 0;
+            font-size: 16px;
+            text-align: center;
+        }
+        .alert-box p {
+            margin: 4px 0;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        .section-title {
+            background-color: #004d40;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 10px;
+            margin: 35px 0 18px 0;
+            font-size: 15px;
+            line-height: 1.5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .question-card {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
+        }
+        .question-header {
+            background-color: #004D42;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 18px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.15);
+        }
+        .question-words {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: normal;
+            color: #e0f2f1;
+            letter-spacing: 0.5px;
+        }
+        .question-words u {
+            text-decoration: underline;
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 576px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .option-btn {
+            background-color: #f0faf8;
+            border: 2px solid #b2dfdb;
+            border-radius: 12px;
+            padding: 14px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #2c3e50;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.1s ease;
+            box-shadow: 0 4px 0 #b2dfdb;
+            position: relative;
+            outline: none;
+        }
+        .option-btn u {
+            text-decoration: underline;
+            color: #ff4757;
+        }
+        .option-btn:active:not(.disabled) {
+            transform: translateY(4px);
+            box-shadow: 0 0px 0 #b2dfdb;
+        }
+        .option-btn.correct {
+            background-color: #00D26A !important;
+            border-color: #00a352 !important;
+            color: white !important;
+            box-shadow: 0 4px 0 #00a352 !important;
+        }
+        .option-btn.correct u {
+            color: white !important;
+        }
+        .option-btn.wrong {
+            background-color: #FF4757 !important;
+            border-color: #d63031 !important;
+            color: white !important;
+            box-shadow: 0 4px 0 #d63031 !important;
+        }
+        .option-btn.wrong u {
+            color: white !important;
+        }
+        .option-btn.disabled {
+            cursor: not-allowed;
+            opacity: 0.85;
+        }
+        .explanation-box {
+            display: none;
+            background-color: #ffffff;
+            border-left: 6px solid #ffa502;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.05), 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .explanation-banner {
+            background-color: #fff9db;
+            border: 1.5px dashed #ffa502;
+            color: #d35400;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .explanation-content {
+            font-size: 14.5px;
+            line-height: 1.7;
+        }
+        .explanation-content ul {
+            margin: 0;
+            padding-left: 15px;
+            list-style: none;
+        }
+        .explanation-content li {
+            margin-bottom: 8px;
+        }
+        .en-word {
+            color: #2980b9;
+            font-weight: bold;
+        }
+        .ipa-box {
+            background-color: #f3e5f5;
+            color: #6a1b9a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-block;
+            margin: 0 4px;
+        }
+        .vi-meaning {
+            color: #d35400;
+            font-style: normal;
+            font-weight: 500;
+        }
+        .why-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            border-top: 1px dashed #eee;
+            padding-top: 10px;
+        }
+        .summary-wrapper {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .summary-btn {
+            background-color: #ff9f43;
+            border: none;
+            color: white;
+            padding: 15px 45px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.2s;
+        }
+        .summary-btn:hover {
+            background-color: #f39c12;
+            transform: translateY(-2px);
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-card {
+            background: white;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            animation: popIn 0.3s ease;
+        }
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .modal-card h2 {
+            margin-top: 0;
+            color: #004D42;
+        }
+        .modal-score {
+            font-size: 48px;
+            font-weight: bold;
+            color: #00D26A;
+            margin: 20px 0;
+        }
+        .modal-feedback {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        .modal-close-btn {
+            background-color: #00B4A2;
+            border: none;
+            color: white;
+            padding: 11px 30px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h5>Giáo viên tạo: Ms Lê Hằng English</h5>
+        <h1>BÀI KIỂM TRA PHÁT ÂM & TRỌNG ÂM TIẾNG ANH</h1>
+    </header>
+
+    <div class="alert-box">
+        <h4>⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️</h4>
+        <p>Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.</p>
+        <p>Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!</p>
+        <p style="text-align: center; font-weight: bold; margin-top: 8px; color: #ff4757;">* Kéo tới đâu, làm tới đó! *</p>
+    </div>
+
+    <div id="quiz-container"></div>
+
+    <div class="summary-wrapper">
+        <button class="summary-btn" onclick="showSummary()">Tổng kết kết quả</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal">
+    <div class="modal-card">
+        <h2>Kết Quả Làm Bài 🌟</h2>
+        <div class="modal-score" id="modal-score">0/30</div>
+        <div class="modal-feedback" id="modal-feedback"></div>
+        <button class="modal-close-btn" onclick="closeModal()">Đóng</button>
+    </div>
+</div>
+
+<script>
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playSound(isCorrect) {
+    try {
+        if (isCorrect) {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+            osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.35);
+        } else {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+            osc.frequency.linearRampToValueAtTime(120, audioCtx.currentTime + 0.25);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.3);
+        }
+    } catch (e) { console.log(e); }
+}
+
+const quizData = [
+    // EXERCISE 1
+    {
+        ex: 1, id: 1, type: "pronunciation",
+        words: "<u>a</u>mong | c<u>a</u>rrot | journ<u>e</u>y | Septemb<u>e</u>r",
+        options: [
+            { text: "among", isCorrect: true, display: "<u>a</u>mong" },
+            { text: "carrot", isCorrect: false, display: "c<u>a</u>rrot" },
+            { text: "journey", isCorrect: false, display: "journ<u>e</u>y" },
+            { text: "September", isCorrect: false, display: "Septemb<u>e</u>r" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>among</span> (prep) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>trong số, ở giữa nhiều người/vật.</span>",
+                "<span class='en-word'>carrot</span> (n) <span class='ipa-box'>/æ/</span>: <span class='vi-meaning'>củ cà rốt.</span>",
+                "<span class='en-word'>journey</span> (n) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>chuyến đi, cuộc hành trình.</span>",
+                "<span class='en-word'>September</span> (n) <span class='ipa-box'>/e/</span>: <span class='vi-meaning'>tháng 9.</span>"
+            ],
+            why: "Phần gạch chân của từ <span class='en-word'>among</span> phát âm là âm schwa <span class='ipa-box'>/ə/</span>, các từ còn lại phát âm là các nguyên âm khác."
+        }
+    },
+    {
+        ex: 1, id: 2, type: "pronunciation",
+        words: "nat<u>u</u>ral | l<u>ea</u>rn | ass<u>i</u>stant | ab<u>i</u>lity",
+        options: [
+            { text: "natural", isCorrect: false, display: "nat<u>u</u>ral" },
+            { text: "learn", isCorrect: true, display: "l<u>ea</u>rn" },
+            { text: "assistant", isCorrect: false, display: "ass<u>i</u>stant" },
+            { text: "ability", isCorrect: false, display: "ab<u>i</u>lity" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>natural</span> (adj) <span class='ipa-box'>/æ/</span>: <span class='vi-meaning'>tự nhiên, thuộc về thiên nhiên.</span>",
+                "<span class='en-word'>learn</span> (v) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>học, học hỏi kiến thức.</span>",
+                "<span class='en-word'>assistant</span> (n) <span class='ipa-box'>/ɪ/</span>: <span class='vi-meaning'>trợ lý, người phụ tá.</span>",
+                "<span class='en-word'>ability</span> (n) <span class='ipa-box'>/ɪ/</span>: <span class='vi-meaning'>khả năng, năng lực.</span>"
+            ],
+            why: "Phần gạch chân của từ <span class='en-word'>learn</span> phát âm là âm dài <span class='ipa-box'>/ɜː/</span>, trong khi các từ còn lại là các nguyên âm ngắn khác."
+        }
+    },
+    {
+        ex: 1, id: 3, type: "pronunciation",
+        words: "fut<u>u</u>re | ret<u>u</u>rn | pict<u>u</u>re | cult<u>u</u>re",
+        options: [
+            { text: "future", isCorrect: false, display: "fut<u>u</u>re" },
+            { text: "return", isCorrect: true, display: "ret<u>u</u>rn" },
+            { text: "picture", isCorrect: false, display: "pict<u>u</u>re" },
+            { text: "culture", isCorrect: false, display: "cult<u>u</u>re" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>future</span> (n) <span class='ipa-box'>/tʃə/</span>: <span class='vi-meaning'>tương lai.</span>",
+                "<span class='en-word'>return</span> (v) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>trở lại, quay về.</span>",
+                "<span class='en-word'>picture</span> (n) <span class='ipa-box'>/tʃə/</span>: <span class='vi-meaning'>bức tranh, hình ảnh.</span>",
+                "<span class='en-word'>culture</span> (n) <span class='ipa-box'>/tʃə/</span>: <span class='vi-meaning'>văn hóa.</span>"
+            ],
+            why: "Phần gạch chân ở <span class='en-word'>return</span> phát âm là <span class='ipa-box'>/ɜː/</span>, trong khi ba từ còn lại có đuôi '-ture' phát âm nhẹ là <span class='ipa-box'>/tʃə/</span>."
+        }
+    },
+    {
+        ex: 1, id: 4, type: "pronunciation",
+        words: "Holid<u>a</u>y | comput<u>e</u>r | afr<u>ai</u>d | d<u>ir</u>ty",
+        options: [
+            { text: "Holiday", isCorrect: false, display: "Holid<u>a</u>y" },
+            { text: "computer", isCorrect: false, display: "comput<u>e</u>r" },
+            { text: "afraid", isCorrect: true, display: "afr<u>ai</u>d" },
+            { text: "dirty", isCorrect: false, display: "d<u>ir</u>ty" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Holiday</span> (n) <span class='ipa-box'>/ɪ/</span>: <span class='vi-meaning'>ngày lễ, kỳ nghỉ.</span>",
+                "<span class='en-word'>computer</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>máy vi tính.</span>",
+                "<span class='en-word'>afraid</span> (adj) <span class='ipa-box'>/eɪ/</span>: <span class='vi-meaning'>lo sợ, e ngại.</span>",
+                "<span class='en-word'>dirty</span> (adj) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>bẩn thỉu, dơ dáy.</span>"
+            ],
+            why: "Phần gạch chân ở từ <span class='en-word'>afraid</span> phát âm là nguyên âm đôi <span class='ipa-box'>/eɪ/</span>, khác biệt hẳn so với các nguyên âm đơn còn lại."
+        }
+    },
+    {
+        ex: 1, id: 5, type: "pronunciation",
+        words: "Ent<u>e</u>r | s<u>e</u>rve | pr<u>e</u>fer | em<u>e</u>rge",
+        options: [
+            { text: "Enter", isCorrect: true, display: "Ent<u>e</u>r" },
+            { text: "serve", isCorrect: false, display: "s<u>e</u>rve" },
+            { text: "prefer", isCorrect: false, display: "pr<u>e</u>fer" },
+            { text: "emerge", isCorrect: false, display: "em<u>e</u>rge" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Enter</span> (v) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>đi vào, nhập vào.</span>",
+                "<span class='en-word'>serve</span> (v) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>phục vụ, đáp ứng.</span>",
+                "<span class='en-word'>prefer</span> (v) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>thích hơn.</span>",
+                "<span class='en-word'>emerge</span> (v) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>nổi lên, xuất hiện.</span>"
+            ],
+            why: "Phần gạch chân ở âm tiết cuối của từ <span class='en-word'>Enter</span> phát âm là âm ngắn <span class='ipa-box'>/ə/</span>, trong khi ba từ còn lại phát âm là âm dài <span class='ipa-box'>/ɜː/</span>."
+        }
+    },
+    {
+        ex: 1, id: 6, type: "pronunciation",
+        words: "Act<u>o</u>r | n<u>e</u>rvous | lit<u>e</u>racy | informat<u>i</u>on",
+        options: [
+            { text: "Actor", isCorrect: false, display: "Act<u>o</u>r" },
+            { text: "nervous", isCorrect: true, display: "n<u>e</u>rvous" },
+            { text: "literacy", isCorrect: false, display: "lit<u>e</u>racy" },
+            { text: "information", isCorrect: false, display: "romat<u>i</u>on" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Actor</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>nam diễn viên.</span>",
+                "<span class='en-word'>nervous</span> (adj) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>lo lắng, bồn chồn.</span>",
+                "<span class='en-word'>literacy</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>sự biết chữ.</span>",
+                "<span class='en-word'>information</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>thông tin.</span>"
+            ],
+            why: "Phần gạch chân ở từ <span class='en-word'>nervous</span> phát âm là âm <span class='ipa-box'>/ɜː/</span>, trong khi các từ còn lại đều được phát âm nhẹ thành âm schwa <span class='ipa-box'>/ə/</span>."
+        }
+    },
+    {
+        ex: 1, id: 7, type: "pronunciation",
+        words: "L<u>a</u>bel | <u>a</u>bsence | b<u>e</u>ll | n<u>u</u>trient",
+        options: [
+            { text: "Label", isCorrect: true, display: "L<u>a</u>bel" },
+            { text: "absence", isCorrect: false, display: "<u>a</u>bsence" },
+            { text: "bell", isCorrect: false, display: "b<u>e</u>ll" },
+            { text: "nutrient", isCorrect: false, display: "n<u>u</u>trient" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Label</span> (n) <span class='ipa-box'>/e|/</span>: <span class='vi-meaning'>nhãn hiệu, nhãn mác.</span>",
+                "<span class='en-word'>absence</span> (n) <span class='ipa-box'>/æ/</span>: <span class='vi-meaning'>sự vắng mặt.</span>",
+                "<span class='en-word'>bell</span> (n) <span class='ipa-box'>/e/</span>: <span class='vi-meaning'>cái chuông.</span>",
+                "<span class='en-word'>nutrient</span> (n) <span class='ipa-box'>/juː/</span>: <span class='vi-meaning'>chất dinh dưỡng.</span>"
+            ],
+            why: "Phần gạch chân ở <span class='en-word'>Label</span> phát âm là nguyên âm đôi <span class='ipa-box'>/eɪ/</span>, khác với nhóm nguyên âm đơn của các từ còn lại."
+        }
+    },
+    {
+        ex: 1, id: 8, type: "pronunciation",
+        words: "V<u>e</u>rb | w<u>or</u>se | w<u>or</u>d | p<u>e</u>pper",
+        options: [
+            { text: "Verb", isCorrect: false, display: "V<u>e</u>rb" },
+            { text: "worse", isCorrect: false, display: "w<u>or</u>se" },
+            { text: "word", isCorrect: false, display: "w<u>or</u>d" },
+            { text: "pepper", isCorrect: true, display: "p<u>e</u>pper" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Verb</span> (n) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>động từ.</span>",
+                "<span class='en-word'>worse</span> (adj) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>tồi tệ hơn.</span>",
+                "<span class='en-word'>word</span> (n) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>từ ngữ.</span>",
+                "<span class='en-word'>pepper</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>hạt tiêu, ớt chuông.</span>"
+            ],
+            why: "Phần gạch chân ở âm tiết cuối của từ <span class='en-word'>pepper</span> được phát âm nhẹ thành <span class='ipa-box'>/ə/</span>, còn ba từ còn lại phát âm là âm dài <span class='ipa-box'>/ɜː/</span>."
+        }
+    },
+    {
+        ex: 1, id: 9, type: "pronunciation",
+        words: "<u>a</u>about | <u>a</u>ffect | <u>a</u>gree | <u>a</u>ny",
+        options: [
+            { text: "about", isCorrect: false, display: "<u>a</u>bout" },
+            { text: "affect", isCorrect: false, display: "<u>a</u>ffect" },
+            { text: "agree", isCorrect: false, display: "<u>a</u>gree" },
+            { text: "any", isCorrect: true, display: "<u>a</u>ny" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>about</span> (prep) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>về, khoảng chừng.</span>",
+                "<span class='en-word'>affect</span> (v) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>ảnh hưởng, tác động.</span>",
+                "<span class='en-word'>agree</span> (v) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>đồng ý, tán thành.</span>",
+                "<span class='en-word'>any</span> (det) <span class='ipa-box'>/e/</span>: <span class='vi-meaning'>bất kỳ người/vật nào.</span>"
+            ],
+            why: "Phần gạch chân ở chữ đầu của từ <span class='en-word'>any</span> phát âm là <span class='ipa-box'>/e/</span>, còn ba từ còn lại đều mang âm nhẹ <span class='ipa-box'>/ə/</span>."
+        }
+    },
+    {
+        ex: 1, id: 10, type: "pronunciation",
+        words: "F<u>u</u>r | f<u>u</u>n | r<u>u</u>n | l<u>u</u>cky",
+        options: [
+            { text: "Fur", isCorrect: true, display: "F<u>u</u>r" },
+            { text: "fun", isCorrect: false, display: "f<u>u</u>n" },
+            { text: "run", isCorrect: false, display: "r<u>u</u>n" },
+            { text: "lucky", isCorrect: false, display: "l<u>u</u>cky" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Fur</span> (n) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>bộ lông của thú vật.</span>",
+                "<span class='en-word'>fun</span> (n) <span class='ipa-box'>/ʌ/</span>: <span class='vi-meaning'>niềm vui, sự vui vẻ.</span>",
+                "<span class='en-word'>run</span> (v) <span class='ipa-box'>/ʌ/</span>: <span class='vi-meaning'>chạy bộ.</span>",
+                "<span class='en-word'>lucky</span> (adj) <span class='ipa-box'>/ʌ/</span>: <span class='vi-meaning'>may mắn, tốt lành.</span>"
+            ],
+            why: "Phần gạch chân ở từ <span class='en-word'>Fur</span> phát âm là âm dài <span class='ipa-box'>/ɜː/</span>, trong khi ba từ còn lại phát âm là âm á ngắn <span class='ipa-box'>/ʌ/</span>."
+        }
+    },
+    {
+        ex: 1, id: 11, type: "pronunciation",
+        words: "B<u>ir</u>d | fam<u>i</u>ly | husb<u>a</u>nd | Sat<u>u</u>rday",
+        options: [
+            { text: "Bird", isCorrect: true, display: "B<u>ir</u>d" },
+            { text: "family", isCorrect: false, display: "fam<u>i</u>ly" },
+            { text: "husband", isCorrect: false, display: "husb<u>a</u>nd" },
+            { text: "Saturday", isCorrect: false, display: "Sat<u>u</u>rday" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Bird</span> (n) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>con chim.</span>",
+                "<span class='en-word'>family</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>gia đình.</span>",
+                "<span class='en-word'>husband</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>người chồng.</span>",
+                "<span class='en-word'>Saturday</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>thứ bảy.</span>"
+            ],
+            why: "Phần gạch chân ở <span class='en-word'>Bird</span> phát âm là âm dài <span class='ipa-box'>/ɜː/</span>, trong khi ba từ còn lại phát âm nhẹ là âm schwa <span class='ipa-box'>/ə/</span>."
+        }
+    },
+    {
+        ex: 1, id: 12, type: "pronunciation",
+        words: "G<u>ir</u>l | f<u>ir</u>st | f<u>i</u>sh | th<u>ir</u>sty",
+        options: [
+            { text: "Girl", isCorrect: false, display: "G<u>ir</u>l" },
+            { text: "first", isCorrect: false, display: "f<u>ir</u>st" },
+            { text: "fish", isCorrect: true, display: "f<u>i</u>sh" },
+            { text: "thirsty", isCorrect: false, display: "th<u>ir</u>sty" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Girl</span> (n) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>cô gái, bé gái.</span>",
+                "<span class='en-word'>first</span> (adj) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>đầu tiên, trước nhất.</span>",
+                "<span class='en-word'>fish</span> (n) <span class='ipa-box'>/ɪ/</span>: <span class='vi-meaning'>con cá.</span>",
+                "<span class='en-word'>thirsty</span> (adj) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>khát nước.</span>"
+            ],
+            why: "Phần gạch chân ở từ <span class='en-word'>fish</span> phát âm là âm i ngắn <span class='ipa-box'>/ɪ/</span>, trong khi ba từ còn lại phát âm là âm dài <span class='ipa-box'>/ɜː/</span>."
+        }
+    },
+    {
+        ex: 1, id: 13, type: "pronunciation",
+        words: "Pr<u>e</u>fer | bett<u>e</u>r | teach<u>e</u>r | work<u>e</u>r",
+        options: [
+            { text: "Prefer", isCorrect: true, display: "Pr<u>e</u>fer" },
+            { text: "better", isCorrect: false, display: "bett<u>e</u>r" },
+            { text: "teacher", isCorrect: false, display: "teach<u>e</u>r" },
+            { text: "worker", isCorrect: false, display: "work<u>e</u>r" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Prefer</span> (v) <span class='ipa-box'>/ɪ/</span>: <span class='vi-meaning'>thích một cái gì đó hơn.</span>",
+                "<span class='en-word'>better</span> (adj) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>tốt hơn.</span>",
+                "<span class='en-word'>teacher</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>giáo viên, thầy cô.</span>",
+                "<span class='en-word'>worker</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>công nhân, người lao động.</span>"
+            ],
+            why: "Phần gạch chân đầu tiên ở từ <span class='en-word'>Prefer</span> được phát âm là âm <span class='ipa-box'>/ɪ/</span>, còn hậu tố '-er' của ba từ còn lại đều phát âm nhẹ là âm <span class='ipa-box'>/ə/</span>."
+        }
+    },
+    {
+        ex: 1, id: 14, type: "pronunciation",
+        words: "Strang<u>e</u>r | sing<u>e</u>r | t<u>e</u>rm | energ<u>y</u>",
+        options: [
+            { text: "Stranger", isCorrect: false, display: "Strang<u>e</u>r" },
+            { text: "singer", isCorrect: false, display: "sing<u>e</u>r" },
+            { text: "term", isCorrect: true, display: "t<u>e</u>rm" },
+            { text: "energy", isCorrect: false, display: "energ<u>y</u>" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Stranger</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>người lạ mặt.</span>",
+                "<span class='en-word'>singer</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>ca sĩ.</span>",
+                "<span class='en-word'>term</span> (n) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>học kỳ, kỳ hạn, thuật ngữ.</span>",
+                "<span class='en-word'>energy</span> (n) <span class='ipa-box'>/i/</span>: <span class='vi-meaning'>năng lượng, sinh lực.</span>"
+            ],
+            why: "Phần gạch chân ở từ <span class='en-word'>term</span> phát âm là âm dài <span class='ipa-box'>/ɜː/</span>, tạo sự khác biệt lớn với các từ còn lại trong bài."
+        }
+    },
+    {
+        ex: 1, id: 15, type: "pronunciation",
+        words: "abs<u>e</u>nt | governm<u>e</u>nt | depend<u>e</u>nt | enj<u>o</u>y",
+        options: [
+            { text: "absent", isCorrect: false, display: "abs<u>e</u>nt" },
+            { text: "government", isCorrect: false, display: "governm<u>e</u>t" },
+            { text: "dependent", isCorrect: false, display: "depend<u>e</u>nt" },
+            { text: "enjoy", isCorrect: true, display: "enj<u>o</u>y" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>absent</span> (adj) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>vắng mặt, nghỉ học.</span>",
+                "<span class='en-word'>government</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>chính phủ, chính quyền.</span>",
+                "<span class='en-word'>dependent</span> (adj) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>lệ thuộc, phụ thuộc vào.</span>",
+                "<span class='en-word'>enjoy</span> (v) <span class='ipa-box'>/ɪ/</span>: <span class='vi-meaning'>thưởng thức, yêu thích.</span>"
+            ],
+            why: "Phần gạch chân ở chữ 'o' của <span class='en-word'>enjoy</span> phát âm là âm <span class='ipa-box'>/ɪ/</span> (do tiền tố en-), các từ còn lại phát âm là âm yếu schwa <span class='ipa-box'>/ə/</span>."
+        }
+    },
+    {
+        ex: 1, id: 16, type: "pronunciation",
+        words: "Lett<u>e</u>r | <u>ea</u>rn | p<u>ur</u>ple | b<u>ir</u>thday",
+        options: [
+            { text: "Letter", isCorrect: true, display: "Lett<u>e</u>r" },
+            { text: "earn", isCorrect: false, display: "<u>ea</u>rn" },
+            { text: "purple", isCorrect: false, display: "p<u>ur</u>ple" },
+            { text: "birthday", isCorrect: false, display: "b<u>ir</u>thday" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Letter</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>lá thư, chữ cái.</span>",
+                "<span class='en-word'>earn</span> (v) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>kiếm tiền, thu được.</span>",
+                "<span class='en-word'>purple</span> (adj) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>màu tím.</span>",
+                "<span class='en-word'>birthday</span> (n) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>ngày sinh nhật.</span>"
+            ],
+            why: "Phần gạch chân ở đuôi từ <span class='en-word'>Letter</span> phát âm là âm ngắn <span class='ipa-box'>/ə/</span>, trong khi ba từ còn lại phát âm là âm dài <span class='ipa-box'>/ɜː/</span>."
+        }
+    },
+    {
+        ex: 1, id: 17, type: "pronunciation",
+        words: "M<u>a</u>n | wom<u>a</u>n | account<u>a</u>nt | highland<u>e</u>r",
+        options: [
+            { text: "Man", isCorrect: true, display: "M<u>a</u>n" },
+            { text: "woman", isCorrect: false, display: "wom<u>a</u>n" },
+            { text: "accountant", isCorrect: false, display: "account<u>a</u>nt" },
+            { text: "highland", isCorrect: false, display: "highland" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Man</span> (n) <span class='ipa-box'>/æ/</span>: <span class='vi-meaning'>người đàn ông.</span>",
+                "<span class='en-word'>woman</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>người phụ nữ.</span>",
+                "<span class='en-word'>accountant</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>kế toán viên.</span>",
+                "<span class='en-word'>highland</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>vùng cao nguyên, miền núi.</span>"
+            ],
+            why: "Phần gạch chân ở từ <span class='en-word'>Man</span> được phát âm là nguyên âm bẹt <span class='ipa-box'>/æ/</span>, trong khi ba từ còn lại phát âm giảm thành âm schwa <span class='ipa-box'>/ə/</span>."
+        }
+    },
+    {
+        ex: 1, id: 18, type: "pronunciation",
+        words: "Col<u>o</u>r | <u>a</u>go | c<u>ur</u>ly | surpr<u>i</u>se",
+        options: [
+            { text: "Color", isCorrect: false, display: "Col<u>o</u>r" },
+            { text: "ago", isCorrect: false, display: "<u>a</u>go" },
+            { text: "curly", isCorrect: true, display: "c<u>ur</u>ly" },
+            { text: "surprise", isCorrect: false, display: "surpr<u>i</u>se" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Color</span> (n) <span class='ipa-box'>/ʌ/</span>: <span class='vi-meaning'>màu sắc.</span>",
+                "<span class='en-word'>ago</span> (adv) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>trước đây, cách đây.</span>",
+                "<span class='en-word'>curly</span> (adj) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>xoăn, quăn (tóc).</span>",
+                "<span class='en-word'>surprise</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>sự ngạc nhiên.</span>"
+            ],
+            why: "Phần gạch chân ở gốc từ <span class='en-word'>curly</span> phát âm là âm dài <span class='ipa-box'>/ɜː/</span>, khác hẳn với các từ còn lại."
+        }
+    },
+    {
+        ex: 1, id: 19, type: "pronunciation",
+        words: "l<u>ea</u>rn | n<u>ea</u>r | <u>ea</u>rth | r<u>esea</u>rch",
+        options: [
+            { text: "learn", isCorrect: false, display: "l<u>ea</u>rn" },
+            { text: "near", isCorrect: true, display: "n<u>ea</u>r" },
+            { text: "earth", isCorrect: false, display: "<u>ea</u>rth" },
+            { text: "research", isCorrect: false, display: "r<u>esea</u>rch" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>learn</span> (v) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>học tập.</span>",
+                "<span class='en-word'>near</span> (prep) <span class='ipa-box'>/ɪə/</span>: <span class='vi-meaning'>gần, cận kề.</span>",
+                "<span class='en-word'>earth</span> (n) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>trái đất.</span>",
+                "<span class='en-word'>research</span> (n/v) <span class='ipa-box'>/ɜː/</span>: <span class='vi-meaning'>nghiên cứu khoa học.</span>"
+            ],
+            why: "Phần gạch chân ở từ <span class='en-word'>near</span> phát âm là nguyên âm đôi <span class='ipa-box'>/ɪə/</span>, trong khi ba từ còn lại phát âm là âm dài <span class='ipa-box'>/ɜː/</span>."
+        }
+    },
+    {
+        ex: 1, id: 20, type: "pronunciation",
+        words: "c<u>o</u>llect | c<u>o</u>ncern | c<u>o</u>ncert | c<u>o</u>mbine",
+        options: [
+            { text: "collect", isCorrect: false, display: "c<u>o</u>llect" },
+            { text: "concern", isCorrect: false, display: "c<u>o</u>ncern" },
+            { text: "concert", isCorrect: true, display: "c<u>o</u>ncert" },
+            { text: "combine", isCorrect: false, display: "c<u>o</u>mbine" }
+        ],
+        explanation: {
+            banner: "Chọn từ có phần gạch chân phát âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>collect</span> (v) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>thu gom, sưu tầm.</span>",
+                "<span class='en-word'>concern</span> (n) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>sự lo lắng, mối bận tâm.</span>",
+                "<span class='en-word'>concert</span> (n) <span class='ipa-box'>/ɒ/</span>: <span class='vi-meaning'>buổi hòa nhạc.</span>",
+                "<span class='en-word'>combine</span> (v) <span class='ipa-box'>/ə/</span>: <span class='vi-meaning'>phối hợp, kết hợp lại.</span>"
+            ],
+            why: "Từ <span class='en-word'>concert</span> nhấn trọng âm vào âm tiết đầu nên chữ 'o' phát âm rõ là <span class='ipa-box'>/ɒ/</span>, trong khi ba từ còn lại trọng âm rơi vào âm tiết thứ hai khiến chữ 'o' biến thành âm lướt schwa <span class='ipa-box'>/ə/</span>."
+        }
+    },
+    // EXERCISE 2
+    {
+        ex: 2, id: 1, type: "stress",
+        words: "Hobbies | interesting | hometown | collecting",
+        options: [
+            { text: "Hobbies", isCorrect: false, display: "Hobbies" },
+            { text: "interesting", isCorrect: false, display: "interesting" },
+            { text: "hometown", isCorrect: false, display: "hometown" },
+            { text: "collecting", isCorrect: true, display: "collecting" }
+        ],
+        explanation: {
+            banner: "Chọn từ có trọng âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Hobbies</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>những sở thích cá nhân.</span>",
+                "<span class='en-word'>interesting</span> (adj) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>thú vị, lôi cuốn.</span>",
+                "<span class='en-word'>hometown</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>quê hương, nơi sinh trưởng.</span>",
+                "<span class='en-word'>collecting</span> (v-ing) <span class='ipa-box'>trọng âm 2</span>: <span class='vi-meaning'>việc sưu tầm, thu gom.</span>"
+            ],
+            why: "Từ <span class='en-word'>collecting</span> có trọng âm rơi vào âm tiết thứ hai, các từ còn lại rơi vào âm tiết thứ nhất."
+        }
+    },
+    {
+        ex: 2, id: 2, type: "stress",
+        words: "Begin | listen | exercise | insect",
+        options: [
+            { text: "Begin", isCorrect: true, display: "Begin" },
+            { text: "listen", isCorrect: false, display: "listen" },
+            { text: "exercise", isCorrect: false, display: "exercise" },
+            { text: "insect", isCorrect: false, display: "insect" }
+        ],
+        explanation: {
+            banner: "Chọn từ có trọng âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Begin</span> (v) <span class='ipa-box'>trọng âm 2</span>: <span class='vi-meaning'>bắt đầu thực hiện.</span>",
+                "<span class='en-word'>listen</span> (v) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>lắng nghe âm thanh.</span>",
+                "<span class='en-word'>exercise</span> (n/v) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>bài tập thể chất / bài tập về nhà.</span>",
+                "<span class='en-word'>insect</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>côn trùng, sâu bọ.</span>"
+            ],
+            why: "Từ <span class='en-word'>Begin</span> có trọng âm chính nhấn vào âm tiết thứ hai, các từ còn lại được nhấn ở âm tiết đầu tiên."
+        }
+    },
+    {
+        ex: 2, id: 3, type: "stress",
+        words: "Bamboo | together | creativity | maturity",
+        options: [
+            { text: "Bamboo", isCorrect: false, display: "Bamboo" },
+            { text: "together", isCorrect: false, display: "together" },
+            { text: "creativity", isCorrect: true, display: "creativity" },
+            { text: "maturity", isCorrect: false, display: "maturity" }
+        ],
+        explanation: {
+            banner: "Chọn từ có trọng âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Bamboo</span> (n) <span class='ipa-box'>trọng âm 2</span>: <span class='vi-meaning'>cây tre.</span>",
+                "<span class='en-word'>together</span> (adv) <span class='ipa-box'>trọng âm 2</span>: <span class='vi-meaning'>cùng nhau, cùng một lúc.</span>",
+                "<span class='en-word'>creativity</span> (n) <span class='ipa-box'>trọng âm 3</span>: <span class='vi-meaning'>khả năng sáng tạo.</span>",
+                "<span class='en-word'>maturity</span> (n) <span class='ipa-box'>trọng âm 2</span>: <span class='vi-meaning'>sự trưởng thành, chín chắn.</span>"
+            ],
+            why: "Từ <span class='en-word'>creativity</span> có trọng âm rơi vào âm tiết thứ ba (nhấn trước đuôi -ty), còn các từ khác nhấn ở âm tiết thứ hai."
+        }
+    },
+    {
+        ex: 2, id: 4, type: "stress",
+        words: "Amazing | building | cardboard | model",
+        options: [
+            { text: "Amazing", isCorrect: true, display: "Amazing" },
+            { text: "building", isCorrect: false, display: "building" },
+            { text: "cardboard", isCorrect: false, display: "cardboard" },
+            { text: "model", isCorrect: false, display: "model" }
+        ],
+        explanation: {
+            banner: "Chọn từ có trọng âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Amazing</span> (adj) <span class='ipa-box'>trọng âm 2</span>: <span class='vi-meaning'>kinh ngạc, tuyệt vời.</span>",
+                "<span class='en-word'>building</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>tòa nhà, công trình xây dựng.</span>",
+                "<span class='en-word'>cardboard</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>bìa các-tông cứng.</span>",
+                "<span class='en-word'>model</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>mô hình, kiểu mẫu.</span>"
+            ],
+            why: "Từ <span class='en-word'>Amazing</span> có trọng âm nằm ở âm tiết thứ hai, trong khi ba danh từ còn lại đều nhấn trọng âm ở âm tiết thứ nhất."
+        }
+    },
+    {
+        ex: 2, id: 5, type: "stress",
+        words: "Reduce | music | something | camping",
+        options: [
+            { text: "Reduce", isCorrect: true, display: "Reduce" },
+            { text: "music", isCorrect: false, display: "music" },
+            { text: "something", isCorrect: false, display: "something" },
+            { text: "camping", isCorrect: false, display: "camping" }
+        ],
+        explanation: {
+            banner: "Chọn từ có trọng âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Reduce</span> (v) <span class='ipa-box'>trọng âm 2</span>: <span class='vi-meaning'>giảm bớt, làm suy giảm.</span>",
+                "<span class='en-word'>music</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>âm nhạc.</span>",
+                "<span class='en-word'>something</span> (pron) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>điều gì đó, một thứ gì đó.</span>",
+                "<span class='en-word'>camping</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>hoạt động dã ngoại, cắm trại.</span>"
+            ],
+            why: "Từ <span class='en-word'>Reduce</span> là động từ hai âm tiết thường nhấn vào âm tiết số hai, các từ còn lại nhấn âm tiết thứ nhất."
+        }
+    },
+    {
+        ex: 2, id: 6, type: "stress",
+        words: "Timetable | drawing | basketball | arrive",
+        options: [
+            { text: "Timetable", isCorrect: false, display: "Timetable" },
+            { text: "drawing", isCorrect: false, display: "drawing" },
+            { text: "basketball", isCorrect: false, display: "basketball" },
+            { text: "arrive", isCorrect: true, display: "arrive" }
+        ],
+        explanation: {
+            banner: "Chọn từ có trọng âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Timetable</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>thời khóa biểu, lịch trình.</span>",
+                "<span class='en-word'>drawing</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>bản vẽ, nghệ thuật vẽ tranh.</span>",
+                "<span class='en-word'>basketball</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>môn thể thao bóng rổ.</span>",
+                "<span class='en-word'>arrive</span> (v) <span class='ipa-box'>trọng âm 2</span>: <span class='vi-meaning'>đến nơi, tới địa điểm.</span>"
+            ],
+            why: "Động từ <span class='en-word'>arrive</span> nhấn trọng âm vào âm tiết thứ hai, còn ba danh từ ghép/danh từ còn lại nhấn ở âm tiết thứ nhất."
+        }
+    },
+    {
+        ex: 2, id: 7, type: "stress",
+        words: "Footballer | responsibility | Duty | benefit",
+        options: [
+            { text: "Footballer", isCorrect: false, display: "Footballer" },
+            { text: "responsibility", isCorrect: true, display: "responsibility" },
+            { text: "Duty", isCorrect: false, display: "Duty" },
+            { text: "benefit", isCorrect: false, display: "benefit" }
+        ],
+        explanation: {
+            banner: "Chọn từ có trọng âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Footballer</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>cầu thủ bóng đá.</span>",
+                "<span class='en-word'>responsibility</span> (n) <span class='ipa-box'>trọng âm 4</span>: <span class='vi-meaning'>trách nhiệm, nghĩa vụ.</span>",
+                "<span class='en-word'>Duty</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>bổn phận, nhiệm vụ công việc.</span>",
+                "<span class='en-word'>benefit</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>lợi ích, phúc lợi.</span>"
+            ],
+            why: "Từ đa âm tiết <span class='en-word'>responsibility</span> có trọng âm rơi chính xác vào âm tiết thứ tư, các từ còn lại nhấn âm tiết thứ nhất."
+        }
+    },
+    {
+        ex: 2, id: 8, type: "stress",
+        words: "Outdoor | patient | develop | lesson",
+        options: [
+            { text: "Outdoor", isCorrect: false, display: "Outdoor" },
+            { text: "patient", isCorrect: false, display: "patient" },
+            { text: "develop", isCorrect: true, display: "develop" },
+            { text: "lesson", isCorrect: false, display: "lesson" }
+        ],
+        explanation: {
+            banner: "Chọn từ có trọng âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Outdoor</span> (adj) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>ở ngoài trời.</span>",
+                "<span class='en-word'>patient</span> (adj/n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>kiên nhẫn / bệnh nhân.</span>",
+                "<span class='en-word'>develop</span> (v) <span class='ipa-box'>trọng âm 2</span>: <span class='vi-meaning'>phát triển, mở rộng.</span>",
+                "<span class='en-word'>lesson</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>bài học trong sách.</span>"
+            ],
+            why: "Động từ ba âm tiết <span class='en-word'>develop</span> nhấn trọng âm vào âm tiết thứ hai, các từ còn lại đều có trọng âm rơi vào âm tiết đầu."
+        }
+    },
+    {
+        ex: 2, id: 9, type: "stress",
+        words: "Jogging | violin | yoga | camping",
+        options: [
+            { text: "Jogging", isCorrect: false, display: "Jogging" },
+            { text: "violin", isCorrect: true, display: "violin" },
+            { text: "yoga", isCorrect: false, display: "yoga" },
+            { text: "camping", isCorrect: false, display: "camping" }
+        ],
+        explanation: {
+            banner: "Chọn từ có trọng âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Jogging</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>hoạt động chạy bộ thong thả.</span>",
+                "<span class='en-word'>violin</span> (n) <span class='ipa-box'>trọng âm 3</span>: <span class='vi-meaning'>đàn vĩ cầm.</span>",
+                "<span class='en-word'>yoga</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>môn yoga thể hình.</span>",
+                "<span class='en-word'>camping</span> (n) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>hoạt động đi cắm trại.</span>"
+            ],
+            why: "Từ đặc biệt <span class='en-word'>violin</span> nhấn vào âm tiết thứ ba, các danh từ còn lại nhấn ở âm tiết thứ nhất."
+        }
+    },
+    {
+        ex: 2, id: 10, type: "stress",
+        words: "Divide | into | discuss | persuade",
+        options: [
+            { text: "Divide", isCorrect: false, display: "Divide" },
+            { text: "into", isCorrect: true, display: "into" },
+            { text: "discuss", isCorrect: false, display: "discuss" },
+            { text: "persuade", isCorrect: false, display: "persuade" }
+        ],
+        explanation: {
+            banner: "Chọn từ có trọng âm khác với các từ còn lại.",
+            analysis: [
+                "<span class='en-word'>Divide</span> (v) <span class='ipa-box'>trọng âm 2</span>: <span class='vi-meaning'>chia rẽ, phân chia phần.</span>",
+                "<span class='en-word'>into</span> (prep) <span class='ipa-box'>trọng âm 1</span>: <span class='vi-meaning'>vào bên trong cái gì.</span>",
+                "<span class='en-word'>discuss</span> (v) <span class='ipa-box'>trọng âm 2</span>: <span class='vi-meaning'>thảo luận, bàn bạc.</span>",
+                "<span class='en-word'>persuade</span> (v) <span class='ipa-box'>trọng âm 2</span>: <span class='vi-meaning'>thuyết phục ai đó làm gì.</span>"
+            ],
+            why: "Giới từ <span class='en-word'>into</span> nhận trọng âm ở âm tiết thứ nhất, ba động từ còn lại đều nhận trọng âm ở âm tiết thứ hai."
+        }
+    }
+];
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function initQuiz() {
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = '';
+    let currentEx = 0;
+
+    quizData.forEach((q, qIndex) => {
+        if (q.ex !== currentEx) {
+            currentEx = q.ex;
+            const exTitle = document.createElement('div');
+            exTitle.className = 'section-title';
+            exTitle.innerHTML = currentEx === 1 
+                ? '<b>Exercise 1:</b> Choose the word (A, B, C, or D) whose underlined part is pronounced differently from the others.' 
+                : '<b>Exercise 2:</b> Choose the word (A, B, C, or D) whose main stress is different from the others in the group.';
+            container.appendChild(exTitle);
+        }
+
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.id = `q-card-${qIndex}`;
+
+        const qHeader = document.createElement('div');
+        qHeader.className = 'question-header';
+        qHeader.innerHTML = `🌟 CÂU ${q.id}: <div class="question-words">${q.words}</div>`;
+        card.appendChild(qHeader);
+
+        const grid = document.createElement('div');
+        grid.className = 'options-grid';
+
+        const shuffledOptions = shuffleArray([...q.options]);
+
+        shuffledOptions.forEach((opt) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerHTML = opt.display;
+            btn.onclick = () => selectOption(qIndex, btn, opt.isCorrect);
+            grid.appendChild(btn);
+        });
+
+        card.appendChild(grid);
+
+        const expBox = document.createElement('div');
+        expBox.className = 'explanation-box';
+        expBox.id = `exp-${qIndex}`;
+
+        const expBanner = document.createElement('div');
+        expBanner.className = 'explanation-banner';
+        expBanner.innerText = q.explanation.banner;
+        expBox.appendChild(expBanner);
+
+        const expContent = document.createElement('div');
+        expContent.className = 'explanation-content';
+        
+        let analysisHtml = '<b>1. Phân tích 4 đáp án:</b><ul>';
+        q.explanation.analysis.forEach(item => {
+            analysisHtml += `<li>• ${item}</li>`;
+        });
+        analysisHtml += '</ul>';
+        analysisHtml += `<div class="why-title">2. Tại sao chọn từ này?</div>`;
+        analysisHtml += `<div>${q.explanation.why}</div>`;
+
+        expContent.innerHTML = analysisHtml;
+        expBox.appendChild(expContent);
+        card.appendChild(expBox);
+        container.appendChild(card);
+    });
+}
+
+const userAnswers = {};
+
+function selectOption(qIndex, selectedBtn, isCorrect) {
+    if (userAnswers[qIndex] !== undefined) return;
+
+    userAnswers[qIndex] = isCorrect;
+    playSound(isCorrect);
+
+    const card = document.getElementById(`q-card-${qIndex}`);
+    const buttons = card.querySelectorAll('.option-btn');
+
+    buttons.forEach(btn => {
+        btn.classList.add('disabled');
+        if (btn === selectedBtn) {
+            if (isCorrect) {
+                btn.classList.add('correct');
+            } else {
+                btn.classList.add('wrong');
+            }
+        }
+    });
+
+    const expBox = document.getElementById(`exp-${qIndex}`);
+    expBox.style.display = 'block';
+}
+
+function showSummary() {
+    let correctCount = 0;
+    const total = quizData.length;
+    
+    for (let i = 0; i < total; i++) {
+        if (userAnswers[i] === true) {
+            correctCount++;
+        }
+    }
+
+    document.getElementById('modal-score').innerText = `${correctCount}/${total}`;
+    
+    let feedback = "";
+    if (correctCount === total) {
+        feedback = "Xuất sắc! Bạn là một thiên tài ngữ âm tiếng Anh! Điểm tuyệt đối 🏆 Hãy ghi chép lại mọi từ mới vào vở nhé!";
+    } else if (correctCount >= total * 0.8) {
+        feedback = "Rất tốt! Bạn nắm rất vững quy tắc phát âm và trọng âm. Hãy xem kỹ những câu sai và chép vào vở nha! 🌟";
+    } else if (correctCount >= total * 0.5) {
+        feedback = "Khá tốt! Bạn đã làm đúng hơn một nửa số câu. Hãy chăm chỉ đọc lại giải thích để tích lũy thêm mẹo làm bài nhé! 📚";
+    } else {
+        feedback = "Hãy kiên trì lên nào! Đọc thật kỹ phần phân tích lý thuyết dưới mỗi câu và ghi lại cấu trúc/phiên âm để nhanh tiến bộ nhé! 💪";
+    }
+    
+    document.getElementById('modal-feedback').innerText = feedback;
+    document.getElementById('modal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
+window.onload = initQuiz;
+</script>
+</body>
+</html>
